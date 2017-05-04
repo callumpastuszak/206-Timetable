@@ -82,3 +82,25 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
     }
   };
 });
+
+/*
+        $scope.storage = $localStorage.$default({
+    	  	myReviews: [{
+							name: "Blade Runner",
+      				mediaType: "Movie",
+							genre: "Science Fiction",
+              review: "Realistic furture sci fi",
+      				dor: "2015-11-03",
+      				rating: "10",
+								},
+			    				{
+							name: "The Girl with all the Gifts",
+				      mediaType: "Book",
+              genre: "Thriller",
+							review: "Brillant, great writing and great story",
+              dor: "2015-08-12",
+      				rating: "8",
+								}]
+					});  // end of creating localStorage 'datasource'
+
+      */

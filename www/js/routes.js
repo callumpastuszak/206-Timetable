@@ -70,6 +70,12 @@ angular.module('app.routes', [])
     controller: 'navDataSheetTemplateCtrl'
   })
 
+.state('databaseTemplate', {
+    url: '/page13',
+    templateUrl: 'templates/databaseTemplate.html',
+    controller: 'databaseTemplateCtrl'
+  })
+  
 $urlRouterProvider.otherwise('/homepage')
 
   
