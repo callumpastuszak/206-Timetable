@@ -7,3 +7,10 @@ angular.module('app.services', [])
 .service('BlankService', [function(){
 
 }]);
+
+
+//angular.module('app', ['ngStorage'])
+
+//.controller('Ctrl', function($scope, $localStorage, $sessionStorage){
+
+//});
