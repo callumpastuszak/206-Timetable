@@ -1,15 +1,14 @@
-angular.module('app.controllers', [])
-  
-.controller('homepageCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+angular.module('app.controllers', ['ngStorage'])
+
+.controller('homepageCtrl', ['$scope' ,'$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
-
-    //$scope.message = "hello";     -test shit
+function ($scope, $stateParams, $localStorage, $sessionStorage) {
+    $scope.$storage = $localStorage;
 
 }])
-   
+
+
 .controller('cycle11PLTCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
@@ -82,10 +81,16 @@ function ($scope, $stateParams) {
 
 }])
 
-.controller('databaseTemplateCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('databaseTemplateCtrl', ['$scope', '$stateParams', '$localStorage', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
+function ($scope, $stateParams, $localStorage) {
+$scope.$storage = $localStorage;
+$scope.dddisplay = $scope.$storage.message;
+    $scope.ddclick = function(ddinput){
+        $scope.$storage.message = ddinput;
+        $scope.dddisplay = $scope.$storage.message;
+        console.log($scope);
+    }
 
 }])

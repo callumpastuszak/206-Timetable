@@ -10,13 +10,14 @@
       </div>
       <form id="databaseTemplate-form1" class="list">
         <ion-list id="databaseTemplate-list8">
-          <ion-item id="databaseTemplate-list-item70">Nav Data Sheets</ion-item>
+          <ion-item id="databaseTemplate-list-item70">{{dddisplay}}</ion-item>
           <div class="item item-body" id="databaseTemplate-list-item-container15">
-            <a id="databasetest-button" class="button button-positive  button-block">edit</a>
-            <div id="databaseTemplate-markdown23" class="show-list-numbers-and-dots">
-              <p style="margin-top:0px;color:#000000;">Tought By: xxxxxx
-                <br>Attendence: xxxxx
-                <br>Infomation: xxxxxx</p>
+            <a id="databasetest-button" ng-click="ddclick(ddinput)" class="button button-royal button-block">s a v e</a>
+            <div class="list list-inset">
+              <label class="item item-input">
+                <input type="text" ng-model="ddinput" placeholder="someshit1">
+                </label>
+              </label>
             </div>
           </div>
         </ion-list>

@@ -8,9 +8,3 @@ angular.module('app.services', [])
 
 }]);
 
-
-//angular.module('app', ['ngStorage'])
-
-//.controller('Ctrl', function($scope, $localStorage, $sessionStorage){
-
-//});

@@ -71,7 +71,7 @@ angular.module('app.routes', [])
   })
 
 .state('databaseTemplate', {
-    url: '/page13',
+    url: '/page12',
     templateUrl: 'templates/databaseTemplate.html',
     controller: 'databaseTemplateCtrl'
   })
