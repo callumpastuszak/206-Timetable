@@ -10,12 +10,20 @@
       </div>
       <form id="databaseTemplate-form1" class="list">
         <ion-list id="databaseTemplate-list8">
-          <ion-item id="databaseTemplate-list-item70">{{dddisplay}}</ion-item>
+          <ion-item id="databaseTemplate-list-item70">Nav Data Sheets</ion-item>
           <div class="item item-body" id="databaseTemplate-list-item-container15">
-            <a id="databasetest-button" ng-click="ddclick(ddinput)" class="button button-royal button-block">s a v e</a>
+            <a id="databasetest-button" ng-click="ddclick()" class="button button-royal button-block">s a v e</a>
+            <div class="item item-body" id="databaseTemplate-list-item-container16">
+            <p>{{dddisplay}}</p>
+        
+            
+        
+        </div>
             <div class="list list-inset">
               <label class="item item-input">
-                <input type="text" ng-model="ddinput" placeholder="someshit1">
+                <textarea type="text" ng-model="cycleName" placeholder="someshit1"></textarea>
+                </label><label class="item item-input">
+                <textarea type="text" ng-model="groupName" placeholder="someshit2"></textarea>
                 </label>
               </label>
             </div>
