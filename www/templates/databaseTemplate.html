@@ -10,21 +10,31 @@
       </div>
       <form id="databaseTemplate-form1" class="list">
         <ion-list id="databaseTemplate-list8">
-          <ion-item id="databaseTemplate-list-item70">Nav Data Sheets</ion-item>
+          <ion-item id="databaseTemplate-list-item70">Nav Data Sheets
+          </ion-item>
           <div class="item item-body" id="databaseTemplate-list-item-container15">
-            <a id="databasetest-button" ng-click="ddclick()" class="button button-royal button-block">s a v e</a>
-            <div class="item item-body" id="databaseTemplate-list-item-container16">
-            <p>{{dddisplay}}</p>
-        
-            
-        
-        </div>
-            <div class="list list-inset">
-              <label class="item item-input">
-                <textarea type="text" ng-model="cycleName" placeholder="someshit1"></textarea>
-                </label><label class="item item-input">
-                <textarea type="text" ng-model="groupName" placeholder="someshit2"></textarea>
-                </label>
+            <div>{{testdisplay}}</div>
+              <div id="databaseTemplate-markdown24" class="show-list-numbers-and-dots">
+                <p style="margin-top:0px;color:#000000;">Tought By: xxxxxx
+                  <br>Attendence: xxxxx
+                  <br>Infomation: xxxxxx</p>
+
+                  <a id="databaseModelButton" style='width:2em; height:1em; font-size:12px;' class="button button-royal button-block">Open Modal</a>
+
+                    <ion-modal-view>
+                      <ion-header-bar>
+                        <h1 class = "title">Modal Title</h1>
+                        </ion-header-bar>
+                        <ion-content>
+                          <button class = "button icon icon-left ion-ios-close-outline" ng-click = "closeModal()">Close Modal</button>
+                          </ion-content>
+                          </ion-modal-view>
+
+              </div>
+              <!--<label class="item item-input">
+                <input type="text" ng-model="testinput" placeholder="someshit1">
+                <a id="databasetest-button" ng-click="testclick(testinpit)" class="button button-royal button-block">s a v e</a>
+                </label> -->
               </label>
             </div>
           </div>
@@ -65,43 +75,3 @@
     </div>
   </ion-content>
 </ion-view>
-
-
-
-
-
-
-
-
-
-
-
-<!--
-     <div role="main" class="ui-content">    
-     	<h2>Reviews</h2>
-        <div  class="ui-body ui-body-b"  align="left">    
-                <br>
-                <table >
-                      <tr>
-                        <td ><strong>Name</strong></td>
-                        <td ><strong>edit</strong></td>
-                         <td ><strong>delete</strong></td>
-                      </tr>
-                      <tr ng-repeat="p in storage.myReviews track by $index"> 
-                         <td > <p> {{p.name}} ..</p></td>
-                         <td>
-                           <a  href="#edit"  ng-click="displayEdit($index)" data-rel="popup" data-position-to="window" ndata-transition="pop"><img src="images/plus.gif" width="42" height="39"></a> 
-                         </td>
-                      </tr>
-                </table>   
-                 Number of filtered items: {{storage.myReviews.length}} 
-        
-                <!--POP-UP - EDIT-->
-                <div data-role="popup" id="edit" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
-                    <a href="index.html" ng-click="saveEditReview(index)"   data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">SAVE EDIT</a>
-                     <a href="index.html"   data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancel</a>
-                    <table width="90%" border="1" cellspacing="2" cellpadding="2">
-                          <tr>
-                            <td>Name</td>
-                            <td> <input  type="text" name="name" ng-model="name"  /></td>
-    //-->
