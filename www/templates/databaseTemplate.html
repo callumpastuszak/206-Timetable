@@ -15,17 +15,16 @@
           <div class="item item-body" id="databaseTemplate-list-item-container15">
             <div>{{testdisplay}}</div>
               <div id="databaseTemplate-markdown24" class="show-list-numbers-and-dots">
-                <p style="margin-top:0px;color:#000000;">Tought By: xxxxxx
-                  <br>Attendence: xxxxx
-                  <br>Infomation: xxxxxx</p>
+                <p style="margin-top:0px;color:#000000;">Tought By: {{teacherDB}}
+                  <br>Attendence: {{attendenceDB}}
+                  <br>{{infomationDB}}</p>
 
 
-                 <a id="hashtagRadio" style='width:2em; height:1em; font-size:12px;' class="button button-royal button-block"
-                      ng-controller="hashtagController" ng-click="modal.show()">Open Modal</a>
+
+                 <a id="hashtagRadio" style='width:4em; height:1em; font-size:12px;' class="button button-royal button-block"
+                      ng-controller="hashtagController" ng-click="modal.show()">Add</a>
                     <div class="item-content">
                       </div>
-
-
                         <script id="hashtag-modal.html" type="text/ng-template">
                           <ion-modal-view>
                             <ion-header-bar class="bar bar-header bar-positive">
@@ -35,18 +34,18 @@
                             <ion-content class="padding">
                               <div class="list">
                                 <label class="item item-input">
-                                  <span class="input-label">First Name</span>
-                                  <input ng-model="newUser.firstName" type="text">
+                                  <span class="input-label">Tought By:</span>
+                                  <input ng-model="newItem.teacher" type="text">
                                 </label>
                                 <label class="item item-input">
-                                  <span class="input-label">Last Name</span>
-                                  <input ng-model="newUser.lastName" type="text">
+                                  <span class="input-label">Attendence:</span>
+                                  <input ng-model="newItem.attendence" type="text">
                                 </label>
                                 <label class="item item-input">
-                                  <span class="input-label">Email</span>
-                                  <input ng-model="newUser.email" type="text">
+                                  <span class="input-label">Infomation:</span>
+                                  <input ng-model="newItem.infomation" type="text">
                                 </label>
-                                <button class="button button-full button-positive" ng-click="createContact(newUser)">Create</button>
+                                <button class="button button-full button-positive" ng-click="createContact(newItem)">Create</button>
                               </div>
                             </ion-content>
                           </ion-modal-view>
@@ -98,3 +97,24 @@
     </div>
   </ion-content>
 </ion-view>
+
+
+
+
+
+
+<!--
+
+  <div  class="ui-body ui-body-b"  align="left">
+                  Search: <input ng-model="query">
+                  <ul ng-repeat="r in storage.myFriends  | filter:query" data-role="listview" list-view data-watch="listView"  data-split-theme="c" data-inset="true"  >
+                  <li>
+                     <img src="images/placeHolder.jpg" width="430" height="430" alt="{{r.name}}">
+                      <h2>{{r.name}}</h2> 
+                      <p> <strong>Mobile:</strong> {{r.mobile}}</p> <br>  
+                  </li>
+                  </ul>
+              </div>
+
+
+              -->
