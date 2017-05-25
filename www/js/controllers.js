@@ -84,63 +84,74 @@ function ($scope, $stateParams) {
 .controller('databaseTemplateCtrl', ['$scope', '$stateParams', '$localStorage', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $localStorage,) {
-
+function ($scope, $stateParams, $localStorage, $ionicModal) {
 $scope.$storage = $localStorage;
-$scope.testdisplay = $scope.$storage.message;
-    $scope.testclick = function(testinput){
-        $scope.$storage.message = testinput;
-        $scope.testdisplay = $scope.$storage.message;
-        console.log($scope);
-    }
+$scope.testdisplay1 = $scope.$storage.message1;
+$scope.testdisplay2 = $scope.$storage.message2;
+$scope.testdisplay3 = $scope.$storage.message3;
 
 }])
 
 
-.controller('hashtagController', function($scope, $ionicModal) {
+.controller('modalController', 
+function($scope, $ionicModal, $localStorage, $state) {
+  $scope.$storage = $localStorage;
   
-  $scope.teacherDB = [
-    { name: 'Cpt Name'},
-  ];
+  $ionicModal.fromTemplateUrl('templates/modalTemplate.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
 
-  $scope.attendenceDB = [
-    { attending: '3PLT Cadets and NCOs'},
-  ];
+  $scope.updateDatabase = function(newInput){
+        $scope.$storage.message1 = newInput.teacherName;
+        $scope.$storage.message2 = newInput.attendingName;
+        $scope.$storage.message3 = newInput.infoName;
+        console.log($scope);
+        $scope.modal.hide();
 
-  $scope.infomationDB = [
-    { info: 'For the lesson you will need to bring 12and3....'},
-  ];
+  };
+})
 
-  $ionicModal.fromTemplateUrl('hashtag-modal.html', {
+/**
+
+controller('modalController', 
+function($scope, $ionicModal, $localStorage) {
+  $scope.$storage = $localStorage;
+  
+  $ionicModal.fromTemplateUrl('templates/modalTemplate.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
   });
   
+        $scope.database = [
+            { teacherPeriod: teacherName },
+            { attendingPeriod: attendingName },
+            { infomationPeriod: infoName }, 
+        ]
 
-  $scope.createContact = function(u) {  
-    console.log("here " + u.teacher);  
-    console.log("here " + u.attendence);
-    console.log("here " + u.infomation);
+        $scope.updateDatabase = function(teacherName, attendingName, infoName){        
+            $scope.database.push({ teacherPeriod: teacherName });
+            $scope.database.push({ attendingPeriod: attendingName });
+            $scope.database.push({ infomationPeriod: infoName });
 
-  /**var addContact = {
-    name: u.name,
-    teacher: u.teacher,
-    information: u.infomation,
-  }
-    **/
+        $scope.modal.hide();
 
-    $scope.teacherDB.push({ name: u.teacher });
-    $scope.attendenceDB.push({ attending: u.attendence });
-    $scope.infomationDB.push({ info: u.infomation });
-    
-    $scope.modal.hide();
   };
+})
 
-});
 
 
-/**
+
+
+
+
+
+
+
+
+
 
 $scope.storage = $localStorage.$default({
     						myReviews: [{
@@ -156,7 +167,8 @@ $scope.storage = $localStorage.$default({
 
 
                             [{
-                                                *****KEY FOR DATABASE*****          
+                              /**
+                                               *****KEY FOR DATABASE*****          
 
                 groupID:  "1PLT",   //Identifies the group it is ment to be in
 
@@ -173,13 +185,13 @@ $scope.storage = $localStorage.$default({
                                           attendingPeriod:  "All cadets",         //User inputed
                                           infomationPeriod: "Bring everything",   //User inputed
                             }]                          
-
+                              **/
 
 //Backup plan if big DB dosn't work, put the databases for the relivent pages inside each controller.
 
-                                                *****THE MAINFRAME*****
+                             //                 *****THE MAINFRAME*****
 
-
+/**
 
 $scope.storage = $localStorage.$default({
     						theManifraime: [{

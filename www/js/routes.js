@@ -75,6 +75,12 @@ angular.module('app.routes', [])
     templateUrl: 'templates/databaseTemplate.html',
     controller: 'databaseTemplateCtrl'
   })
+
+.state('modalTemplate', {
+  url: 'page99',
+  templateUrl:  'templates/modalTemplate.html',
+  controller: 'modalController'
+})
   
 $urlRouterProvider.otherwise('/homepage')
 
