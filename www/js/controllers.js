@@ -1,4 +1,4 @@
-angular.module('app.controllers', ['ngStorage'])
+angular.module('app.controllers', ['ngStorage', 'app.services'])
 
 .controller('homepageCtrl', ['$scope' ,'$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
@@ -81,72 +81,108 @@ function ($scope, $stateParams) {
 
 }])
 
-.controller('databaseTemplateCtrl', ['$scope', '$stateParams', '$localStorage', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('databaseTemplateCtrl', ['$scope', '$stateParams', 'timetableDataService', '$ionicModal', '$localStorage', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $localStorage, $ionicModal) {
-$scope.$storage = $localStorage;
-$scope.testdisplay1 = $scope.$storage.message1;
-$scope.testdisplay2 = $scope.$storage.message2;
-$scope.testdisplay3 = $scope.$storage.message3;
-
+function ($scope, $stateParams, timetableDataService, $ionicModal, $localStorage) {
+  //var periods = timetableDataService.getPeriodsForNextWeek();
+  $scope.$storage = $localStorage;
 }])
 
 
-.controller('modalController', 
-function($scope, $ionicModal, $localStorage, $state) {
+.controller('modalController', ['$scope', '$stateParams', '$ionicModal', '$localStorage', 
+function($scope, $stateParams, $ionicModal, $localStorage) {
   $scope.$storage = $localStorage;
   
   $ionicModal.fromTemplateUrl('templates/modalTemplate.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
-  });
 
-  $scope.updateDatabase = function(newInput){
-        $scope.$storage.message1 = newInput.teacherName;
-        $scope.$storage.message2 = newInput.attendingName;
-        $scope.$storage.message3 = newInput.infoName;
+  $scope.storage = $localStorage.$default({
+          database: {
+            events: 
+            [{
+                teacherPeriod: "idk",
+                attendingPeriod: "noone",
+                infomationPeriod: "g fed",
+                event: {
+                  name: "abcd",
+                  time: {
+                    startTime: "2019-09-21",
+                    endTime: "",
+                    peopleAttending: [
+                      { 
+                        name: "Alan",
+                        age: "asd",
+                        platoon: {
+                          name: "3platoon",
+                          commander: "CUO James",
+                        }
+                      }
+                    ]
+                  }
+                }
+              }],
+            }});
+
+  $scope.updateDatabase = function(newInput) {
+        $scope.$storage.database.events.push({teacherPeriod: newInput.teacherName});
+        $scope.$storage.database.events["0"].attendingPeriod = newInput.attendingName;
+        $scope.$storage.database.events["0"].infomationPeriod = newInput.infoName;
         console.log($scope);
         $scope.modal.hide();
+  }
 
-  };
 })
+}]);
+
+/**
+  $scope.updateDatabase = function (newInput) {
+							var addInput = {
+							teacherPeriod: 		newInput.teacherName,
+							attendingPeriod: 	newInput.attendingName,
+							infoPeriod: 		  newInput.infoName,
+						}
+
+
+
+						
+					// Push the addInput Object(above) into Localstorage	
+						$localStorage.database.push(updateDatabase);
+							newInput.teacherName			= 		"" ;
+							newInput.attendingName	= 		"";
+							newInput.infoName  		= 		"";
+          };
+
+
+.controller('databaseController', function($scope,$localStorage) {
+					
+					// this CREATES a localstorage called "myReviews".
+					// this sets up default records
+					// you can access this localstorage in your html page via the $scope eg $scope.storage.myReviews  			
+				
+
+
 
 /**
 
-controller('modalController', 
-function($scope, $ionicModal, $localStorage) {
-  $scope.$storage = $localStorage;
-  
-  $ionicModal.fromTemplateUrl('templates/modalTemplate.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-  
-        $scope.database = [
-            { teacherPeriod: teacherName },
-            { attendingPeriod: attendingName },
-            { infomationPeriod: infoName }, 
-        ]
 
-        $scope.updateDatabase = function(teacherName, attendingName, infoName){        
-            $scope.database.push({ teacherPeriod: teacherName });
-            $scope.database.push({ attendingPeriod: attendingName });
-            $scope.database.push({ infomationPeriod: infoName });
-
-        $scope.modal.hide();
-
-  };
-})
+        $ionicModal.fromTemplateUrl('templates/modalTemplate.html', {scope: $scope}).then(function(modal) {
+            $scope.modal = modal;
+          });
+          
+          $scope.createContact = function(u) {        
+            $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
+            $scope.modal.hide();
+          };
 
 
-
-
-
-
-
+          $scope.database = {
+            teacherPeriod: "Cpt Name",
+            attendingPeriod: "All cadets",
+						infomationPeriod: "Bring everything",
+          }
 
 
 

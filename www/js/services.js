@@ -4,7 +4,15 @@ angular.module('app.services', [])
 
 }])
 
-.service('BlankService', [function(){
-
+.service('timetableDataService', [function(){
+    /**service.getPeriodsForNextWeek = function() {
+        asdihgiyasvdkjug
+        asdihgiyasvdkjugasd
+        return [{
+            //.....
+            //.....
+            //.....
+            //.....
+        }];
+    }**/
 }]);
-

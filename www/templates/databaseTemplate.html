@@ -14,9 +14,9 @@
           </ion-item>
           <div class="item item-body" id="databaseTemplate-list-item-container15">
               <div id="databaseTemplate-markdown24" class="show-list-numbers-and-dots">
-                <p style="margin-top:0px;color:#000000;">Tought By: {{testdisplay1}}
-                  <br>Attendence: {{testdisplay2}}
-                  <br>Infomation: {{testdisplay3}}</p>
+                <p style="margin-top:0px;color:#000000;">Tought By: {{$storage.database.events["0"].teacherPeriod}}
+                  <br>Attendence: {{$storage.database.events["0"].attendingPeriod}}
+                  <br>Infomation: {{$storage.database.events["0"].infomationPeriod}}</p>
                  <button style='width:4em; height:1em; font-size:12px;' class="button button-royal button-block"
                  ng-click="modal.show()" ng-controller="modalController">Add</button>
               </div>
