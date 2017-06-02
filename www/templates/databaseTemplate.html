@@ -10,20 +10,15 @@
       </div>
       <form id="databaseTemplate-form1" class="list">
         <ion-list id="databaseTemplate-list8">
-          <ion-item id="databaseTemplate-list-item70">Nav Data Sheets
-          </ion-item>
+          <ion-item id="databaseTemplate-list-item70">{{$storage.database.periods["0"].nameofPeriod}}</ion-item>
           <div class="item item-body" id="databaseTemplate-list-item-container15">
               <div id="databaseTemplate-markdown24" class="show-list-numbers-and-dots">
-                <p style="margin-top:0px;color:#000000;">Tought By: {{$storage.database.events["0"].teacherPeriod}}
-                  <br>Attendence: {{$storage.database.events["0"].attendingPeriod}}
-                  <br>Infomation: {{$storage.database.events["0"].infomationPeriod}}</p>
+                <p style="margin-top:0px;color:#000000;">Tought By: {{$storage.database.periods["0"].teacherPeriod}}
+                  <br>Attendence: {{$storage.database.periods["0"].attendingPeriod}}
+                  <br>Infomation: {{$storage.database.periods["0"].infomationPeriod}}</p>
                  <button style='width:4em; height:1em; font-size:12px;' class="button button-royal button-block"
                  ng-click="modal.show()" ng-controller="modalController">Add</button>
               </div>
-              <!--<label class="item item-input">
-                <input type="text" ng-model="testinput" placeholder="someshit1">
-                <a id="databasetest-button" ng-click="testclick(testinpit)" class="button button-royal button-block">s a v e</a>
-                </label> -->
               </label>
             </div>
           </div>

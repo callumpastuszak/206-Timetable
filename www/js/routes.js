@@ -81,6 +81,7 @@ angular.module('app.routes', [])
   templateUrl:  'templates/modalTemplate.html',
   controller: 'modalController'
 })
+
   
 $urlRouterProvider.otherwise('/homepage')
 

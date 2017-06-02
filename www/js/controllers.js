@@ -92,101 +92,45 @@ function ($scope, $stateParams, timetableDataService, $ionicModal, $localStorage
 
 .controller('modalController', ['$scope', '$stateParams', '$ionicModal', '$localStorage', 
 function($scope, $stateParams, $ionicModal, $localStorage) {
-  $scope.$storage = $localStorage;
+  $scope.$storage = $localStorage;  //For ngstorage
   
-  $ionicModal.fromTemplateUrl('templates/modalTemplate.html', {
-    scope: $scope
+  $ionicModal.fromTemplateUrl('templates/modalTemplate.html', {   //Here is where the modal is called from ionic
+    scope: $scope                                                 //it is also called to run
   }).then(function(modal) {
     $scope.modal = modal;
+               
 
-  $scope.storage = $localStorage.$default({
-          database: {
-            events: 
-            [{
-                teacherPeriod: "idk",
-                attendingPeriod: "noone",
-                infomationPeriod: "g fed",
-                event: {
-                  name: "abcd",
-                  time: {
-                    startTime: "2019-09-21",
-                    endTime: "",
-                    peopleAttending: [
-                      { 
-                        name: "Alan",
-                        age: "asd",
-                        platoon: {
-                          name: "3platoon",
-                          commander: "CUO James",
-                        }
-                      }
-                    ]
-                  }
-                }
-              }],
-            }});
-
-  $scope.updateDatabase = function(newInput) {
-        $scope.$storage.database.events.push({teacherPeriod: newInput.teacherName});
-        $scope.$storage.database.events["0"].attendingPeriod = newInput.attendingName;
-        $scope.$storage.database.events["0"].infomationPeriod = newInput.infoName;
+    $scope.storage = $localStorage.$default({
+      database: {
+        periods: [{             //Object is for the individual period that the data is for
+          nameofPeriod: "Nav Data Sheet Revision",
+          teacherPeriod: "Teacher person",
+          attendingPeriod: "Cadets",
+          infomationPeriod: "Bring x,y and z",
+        }]
+      }
+    });
+                                                                  //Here is where the database is updated from the user input
+  $scope.updateDatabase = function(newInput) {                    //Recieves the data from the newInput object   
+        $scope.$storage.database.periods["0"].nameofPeriod = newInput.periodName;   //Places the input from the user (newInput) into the database (newInput.periodName into database.nameofPeriod)
+        $scope.$storage.database.periods["0"].teacherPeriod = newInput.teacherName;
+        $scope.$storage.database.periods["0"].attendingPeriod = newInput.attendingName;
+        $scope.$storage.database.periods["0"].infomationPeriod = newInput.infoName;  //"0" is so that it gets the newest input
         console.log($scope);
-        $scope.modal.hide();
+        $scope.modal.hide();    //Hides the modal because the input has finished
   }
 
 })
 }]);
 
 /**
-  $scope.updateDatabase = function (newInput) {
-							var addInput = {
-							teacherPeriod: 		newInput.teacherName,
-							attendingPeriod: 	newInput.attendingName,
-							infoPeriod: 		  newInput.infoName,
-						}
+  
 
 
 
-						
-					// Push the addInput Object(above) into Localstorage	
-						$localStorage.database.push(updateDatabase);
-							newInput.teacherName			= 		"" ;
-							newInput.attendingName	= 		"";
-							newInput.infoName  		= 		"";
-          };
-
-
-.controller('databaseController', function($scope,$localStorage) {
+                            Below is the intented database design that wasn't completed
 					
-					// this CREATES a localstorage called "myReviews".
-					// this sets up default records
-					// you can access this localstorage in your html page via the $scope eg $scope.storage.myReviews  			
 				
-
-
-
-/**
-
-
-        $ionicModal.fromTemplateUrl('templates/modalTemplate.html', {scope: $scope}).then(function(modal) {
-            $scope.modal = modal;
-          });
-          
-          $scope.createContact = function(u) {        
-            $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
-            $scope.modal.hide();
-          };
-
-
-          $scope.database = {
-            teacherPeriod: "Cpt Name",
-            attendingPeriod: "All cadets",
-						infomationPeriod: "Bring everything",
-          }
-
-
-
-
 
 
 $scope.storage = $localStorage.$default({
@@ -260,150 +204,7 @@ $scope.storage = $localStorage.$default({
                                                                     teacherPeriod:  "Cpt Name",
                                                                     attendingPeriod:  "All cadets",
                                                                     infomationPeriod: "Bring everything",
-                                      groupID:  "1PLT",
-                                      eventID:  "navDatasheets",
-                                      eventName:  "Nav Data Sheets",
-                                      dateEvent:  "random date",
-                                                                    groupID:  "1PLT",
-                                                                    eventID:  "navDatasheets",
-                                                                    periodName: "Nav Data Sheets",
-                                                                    periodID: "navDataSheet1",
-                                                                    teacherPeriod:  "Cpt Name",
-                                                                    attendingPeriod:  "All cadets",
-                                                                    infomationPeriod: "Bring everything",
-
-                                                                    groupID:  "1PLT",
-                                                                    eventID:  "navDatasheets",
-                                                                    periodName: "Nav Data Sheets",
-                                                                    periodID: "navDataSheet1",
-                                                                    teacherPeriod:  "Cpt Name",
-                                                                    attendingPeriod:  "All cadets",
-                                                                    infomationPeriod: "Bring everything",
-                                                                                                                    
-                                                                    groupID:  "1PLT",
-                                                                    eventID:  "navDatasheets",
-                                                                    periodName: "Nav Data Sheets",
-                                                                    periodID: "navDataSheet1",
-                                                                    teacherPeriod:  "Cpt Name",
-                                                                    attendingPeriod:  "All cadets",
-                                                                    infomationPeriod: "Bring everything",
-                                      groupID:  "1PLT",
-                                      eventID:  "navDatasheets",
-                                      eventName:  "Nav Data Sheets",
-                                      dateEvent:  "random date",
-                                                                    groupID:  "1PLT",
-                                                                    eventID:  "navDatasheets",
-                                                                    periodName: "Nav Data Sheets",
-                                                                    periodID: "navDataSheet1",
-                                                                    teacherPeriod:  "Cpt Name",
-                                                                    attendingPeriod:  "All cadets",
-                                                                    infomationPeriod: "Bring everything",
-
-                                                                    groupID:  "1PLT",
-                                                                    eventID:  "navDatasheets",
-                                                                    periodName: "Nav Data Sheets",
-                                                                    periodID: "navDataSheet1",
-                                                                    teacherPeriod:  "Cpt Name",
-                                                                    attendingPeriod:  "All cadets",
-                                                                    infomationPeriod: "Bring everything",
-                                                                                                                    
-                                                                    groupID:  "1PLT",
-                                                                    eventID:  "navDatasheets",
-                                                                    periodName: "Nav Data Sheets",
-                                                                    periodID: "navDataSheet1",
-                                                                    teacherPeriod:  "Cpt Name",
-                                                                    attendingPeriod:  "All cadets",
-                                                                    infomationPeriod: "Bring everything",
-                                      groupID:  "1PLT",
-                                      eventID:  "navDatasheets",
-                                      eventName:  "Nav Data Sheets",
-                                      dateEvent:  "random date",
-                                                                    groupID:  "1PLT",
-                                                                    eventID:  "navDatasheets",
-                                                                    periodName: "Nav Data Sheets",
-                                                                    periodID: "navDataSheet1",
-                                                                    teacherPeriod:  "Cpt Name",
-                                                                    attendingPeriod:  "All cadets",
-                                                                    infomationPeriod: "Bring everything",
-
-                                                                    groupID:  "1PLT",
-                                                                    eventID:  "navDatasheets",
-                                                                    periodName: "Nav Data Sheets",
-                                                                    periodID: "navDataSheet1",
-                                                                    teacherPeriod:  "Cpt Name",
-                                                                    attendingPeriod:  "All cadets",
-                                                                    infomationPeriod: "Bring everything",
-                                                                                                                    
-                                                                    groupID:  "1PLT",
-                                                                    eventID:  "navDatasheets",
-                                                                    periodName: "Nav Data Sheets",
-                                                                    periodID: "navDataSheet1",
-                                                                    teacherPeriod:  "Cpt Name",
-                                                                    attendingPeriod:  "All cadets",
-                                                                    infomationPeriod: "Bring everything",
-                                      groupID:  "1PLT",
-                                      eventID:  "navDatasheets",
-                                      eventName:  "Nav Data Sheets",
-                                      dateEvent:  "random date",
-                                                                    groupID:  "1PLT",
-                                                                    eventID:  "navDatasheets",
-                                                                    periodName: "Nav Data Sheets",
-                                                                    periodID: "navDataSheet1",
-                                                                    teacherPeriod:  "Cpt Name",
-                                                                    attendingPeriod:  "All cadets",
-                                                                    infomationPeriod: "Bring everything",
-
-                                                                    groupID:  "1PLT",
-                                                                    eventID:  "navDatasheets",
-                                                                    periodName: "Nav Data Sheets",
-                                                                    periodID: "navDataSheet1",
-                                                                    teacherPeriod:  "Cpt Name",
-                                                                    attendingPeriod:  "All cadets",
-                                                                    infomationPeriod: "Bring everything",
-                                                                                                                    
-                                                                    groupID:  "1PLT",
-                                                                    eventID:  "navDatasheets",
-                                                                    periodName: "Nav Data Sheets",
-                                                                    periodID: "navDataSheet1",
-                                                                    teacherPeriod:  "Cpt Name",
-                                                                    attendingPeriod:  "All cadets",
-                                                                    infomationPeriod: "Bring everything",
-                                      groupID:  "1PLT",
-                                      eventID:  "navDatasheets",
-                                      eventName:  "Nav Data Sheets",
-                                      dateEvent:  "random date",
-                                                                    groupID:  "1PLT",
-                                                                    eventID:  "navDatasheets",
-                                                                    periodName: "Nav Data Sheets",
-                                                                    periodID: "navDataSheet1",
-                                                                    teacherPeriod:  "Cpt Name",
-                                                                    attendingPeriod:  "All cadets",
-                                                                    infomationPeriod: "Bring everything",
-
-                                                                    groupID:  "1PLT",
-                                                                    eventID:  "navDatasheets",
-                                                                    periodName: "Nav Data Sheets",
-                                                                    periodID: "navDataSheet1",
-                                                                    teacherPeriod:  "Cpt Name",
-                                                                    attendingPeriod:  "All cadets",
-                                                                    infomationPeriod: "Bring everything",
-                                                                                                                    
-                                                                    groupID:  "1PLT",
-                                                                    eventID:  "navDatasheets",
-                                                                    periodName: "Nav Data Sheets",
-                                                                    periodID: "navDataSheet1",
-                                                                    teacherPeriod:  "Cpt Name",
-                                                                    attendingPeriod:  "All cadets",
-                                                                    infomationPeriod: "Bring everything",
-
-
-
-
-
-
-
-
-
+                                                                    
                     groupID:  "2PLT",
                     groupID:  "3PLT",
                     groupID:  "4PLT",
